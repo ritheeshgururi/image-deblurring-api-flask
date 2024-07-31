@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Deblurring</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="radio"] {
+            margin-bottom: 10px;
+        }
+        label {
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload an Image</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <label for="normal_image">
+                <input type="radio" name="process_type" value="normal_image" id="normal_image" checked>
+                Blur and Deblur Image
+            </label>
+            <label for="originally_blurred">
+                <input type="radio" name="process_type" value="originally_blurred" id="originally_blurred">
+                Deblur Already Blurred Image
+            </label>
+            <input type="text" name="const" placeholder="Const (e.g., 0.002)" required>
+            <input type="text" name="brightness_factor" placeholder="Brightness Factor (e.g., 1.5)" required>
+            <input type="submit" value="Upload">
+        </form>
+    </div>
+</body>
+</html>
